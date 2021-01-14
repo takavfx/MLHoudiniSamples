@@ -27,6 +27,7 @@ SOP_PyTorchTest.h
 
 # Link against the Houdini libraries, and add required include directories and
 # compile definitions.
+# target_link_libraries( ${library_name} Houdini)
 target_link_libraries( ${library_name} Houdini "${TORCH_LIBRARIES}")
 
 set_property(TARGET ${library_name} PROPERTY CXX_STANDARD 14)
@@ -39,11 +40,17 @@ target_include_directories( ${library_name} PRIVATE
 # Sets several common target properties, such as the library's output directory.
 houdini_configure_target( ${library_name} )
 
+
 if (MSVC)
+    set(binary_dir $<TARGET_FILE_DIR:${library_name}>/../bin)
+    add_custom_command(TARGET ${library_name}
+                        COMMAND ${CMAKE_COMMAND} -E make_directory
+                        ${binary_dir})
+    
     file(GLOB TORCH_DLLS "${TORCH_INSTALL_PREFIX}/lib/*.dll")
     add_custom_command(TARGET ${library_name}
                         POST_BUILD
                         COMMAND ${CMAKE_COMMAND} -E copy_if_different
                         ${TORCH_DLLS}
-                        $<TARGET_FILE_DIR:${library_name}>)
+                        ${binary_dir})
 endif (MSVC)

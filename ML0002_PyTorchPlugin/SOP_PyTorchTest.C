@@ -123,11 +123,6 @@ static const char *theDsFile = R"THEDSFILE(
             "zx"    "ZX Plane"
         }
     }
-    parm {
-        name    "movie_file"
-        label   "Movie File"
-        type    file
-    }
 }
 )THEDSFILE";
 
