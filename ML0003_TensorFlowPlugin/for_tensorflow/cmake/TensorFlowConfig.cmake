@@ -3,7 +3,7 @@
 # This will define the following variables:
 #
 #   TENSORFLOW_INCLUDE_DIRS   -- The include directories for tensorflow
-#   TENSORFLOW_LIBRARY        -- Libraries to link against
+#   TENSORFLOW_LIBRARIES        -- Libraries to link against
 #   TENSORFLOW_INSTALL_PREFIX -- Path to library root
 #
 # and the following imported targets:
