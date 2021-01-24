@@ -1,7 +1,9 @@
 {
     "files.associations": {
         "SOP_PyTorchTest.C": "cpp",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "Core.C": "cpp",
+        "VIBE_Core.C": "cpp"
     },
     "C_Cpp.intelliSenseEngineFallback": "Enabled",
     "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools"
