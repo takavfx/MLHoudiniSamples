@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "SOP_PyTorchTest.C": "cpp"
+    },
+    "terminal.integrated.shell.windows": "C:\\Program Files\\Side Effects Software\\Houdini 18.5.408\\bin\\hcmd.exe",
+    "C_Cpp.default.configurationProvider": "go2sh.cmake-integration"
+}

@@ -1,0 +1,57 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "clean",
+            "type": "shell",
+            "command": "if exist build (rmdir /s /q build)",
+            "options": {
+                "cwd": "${workspaceRoot}"
+            },
+            "group": "build",
+        },
+        {
+            "label": "mkdir",
+            "type": "shell",
+            "command": "mkdir build",
+            "options": {
+                "cwd": "${workspaceRoot}"
+            },
+            "group": "build",
+            "dependsOn": "clean",
+        },
+        {
+            "label": "cmake build",
+            "type": "shell",
+            "command": "cmake .. -G \"Visual Studio 15 2017 Win64\" -DCMAKE_PREFIX_PATH=F:\\Develop\\TensorFlow\\lib\\libtensorflow-gpu-windows-x86_64-2.4.0",
+            "group": "build",
+            "options": {
+                "cwd": "${workspaceRoot}/build"
+            },
+            "presentation": {
+                "reveal": "silent"
+            },
+            "problemMatcher": "$msCompile",
+            "dependsOn": "mkdir"
+        },
+        {
+            "label": "build release",
+            "type": "shell",
+            "command": "cmake --build . --config Release",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "options": {
+                "cwd": "${workspaceRoot}/build"
+            },
+            "presentation": {
+                "reveal": "silent"
+            },
+            "problemMatcher": "$msCompile",
+            "dependsOn": "cmake build"
+        }
+    ]
+}
